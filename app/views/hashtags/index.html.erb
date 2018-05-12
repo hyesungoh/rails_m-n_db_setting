@@ -1,0 +1,9 @@
+<h1><%= @hashtag.name %></h1>
+<% @hashtag.posts.each do |post| %>
+    <p> <%= post.title %> : <%= post.content %> </p>
+    <p> Hashtags :
+        <% post.hashtags.each do |tag| %>
+            <%= tag.name %>
+        <% end %>
+    </p>
+<% end %>

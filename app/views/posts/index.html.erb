@@ -1,0 +1,23 @@
+<h1>CRD board with hashtag</h1>
+<form action="/posts/create">
+    <input type="text" name="post_title" placeholder="제목을 입력해주세요">
+    <input type="text" name="post_content" placeholder="내용을 입력해주세요">
+    <input type="text" name="hashtags" placeholder="#해시태그는 ,로 구분해주세요">
+    <input type="submit" value="저장하기">
+</form>
+<hr/>
+
+<h2>posts</h2>
+<% @posts.each do |post| %>
+    <p><b><%= post.title %></b></p>
+    <p><%= post.content %></p>
+    
+    <p> Hashtag :
+    <% post.hashtags.each do |tag| %>
+        <a href="/hashtag/<%= tag.id %>"><%= tag.name %></a>
+    <% end %>
+    </p>
+    
+    <a href="/posts/delete/<%= post.id %>">삭제</a>
+    <p>ㅡㅡㅡㅡㅡㅡㅡㅡ</p>
+<% end %>
