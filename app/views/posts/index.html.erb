@@ -1,4 +1,8 @@
 <h1>CRD board with hashtag</h1>
+
+<%= current_user.email %>
+<a href="/users/sign_out">Log Out</a>
+
 <form action="/posts/create">
     <input type="text" name="post_title" placeholder="제목을 입력해주세요">
     <input type="text" name="post_content" placeholder="내용을 입력해주세요">
@@ -11,6 +15,8 @@
 <% @posts.each do |post| %>
     <p><b><%= post.title %></b></p>
     <p><%= post.content %></p>
+    <p><%= post.user.email %></p>
+    <p><%= post.user.name %></p>
     
     <p> Hashtag :
     <% post.hashtags.each do |tag| %>

@@ -1,12 +1,17 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.reverse
+    if user_signed_in?
+      @posts = Post.all.reverse
+    else
+      redirect_to '/users/sign_in'
+    end
   end
 
   def create
     temp_post = Post.new
     temp_post.title = params[:post_title]
     temp_post.content = params[:post_content]
+    temp_post.user_id = current_user.id
     
     hashtags = params[:hashtags].split(',')
     hashtags.each do |tag|
